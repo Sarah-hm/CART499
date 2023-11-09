@@ -1,0 +1,134 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+#aMRI-prompt-container {
+  position: fixed;
+  width: 30%;
+  height: 30vh;
+  left: 35%;
+  top: 35%;
+  background: white;
+  padding: 2rem;
+  text-wrap: nowrap;
+  text-align: center;
+  border: black solid 1px;
+}
+
+#aMRI-prompt-form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+#aMRI-prompt-form > * {
+  margin: 1%;
+}
+
+#aMRI-prompt-form [type="text"] {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid black;
+  background: none;
+}
+
+#aMRI-prompt-form [type="submit"] {
+  border: none;
+  outline: none;
+  border: 1px solid black;
+  cursor: pointer;
+  background: none;
+  transition: all 0.2s;
+}
+
+#aMRI-prompt-form [type="submit"]:hover {
+  color: white;
+  background: black;
+}
+
+#aMRI-canvas {
+  width: 100%;
+  height: 100vh;
+}
+
+/* svg brain */
+
+#svg-brain-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: cyan;
+}
+
+#svg-brain {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: pink;
+  padding: 2rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+/* brain svgs */
+.cls-1,
+.cls-2 {
+  fill: grey;
+  stroke: grey;
+}
+
+path {
+  cursor: pointer;
+}
+
+.cls-1,
+.cls-2,
+.cls-3 {
+  stroke-width: 0px;
+}
+
+.cls-3 {
+  fill: darkgrey;
+  stroke: darkgrey;
+  transition: all 0.2s;
+}
+
+.cls-3:hover {
+  fill: black;
+  /* transform: scale(2); */
+}
+
+/* ripple effect */
+
+span {
+  position: absolute;
+  border-radius: 50%;
+  /* To make it round */
+  background-color: rgba(0, 0, 0, 0.3);
+
+  width: 100px;
+  height: 100px;
+  margin-top: -50px;
+  /* for positioning */
+  margin-left: -50px;
+
+  animation: ripple 1s ease-out;
+  opacity: 0;
+}
+
+/* Add animation */
+@keyframes ripple {
+  from {
+    opacity: 1;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(5);
+  }
+}
