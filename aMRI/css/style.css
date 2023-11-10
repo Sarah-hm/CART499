@@ -184,6 +184,16 @@
   z-index: 200;
   /* font-style: italic; */
 }
+
+#aMRI-title-section a {
+  color: black;
+  text-decoration: none;
+}
+
+#aMRI-title-section a :visited {
+  color: black;
+  text-decoration: none;
+}
 #aMRI-title-section span {
   font-style: italic;
 }

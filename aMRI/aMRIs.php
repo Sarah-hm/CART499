@@ -11,8 +11,8 @@
 </head>
 <body>
 <div id="aMRI-title-section">
-    <h1><span>afunctional</span></h1>
-    <h1>MRIs</h1>
+    <a href="index.php"><h1><span>afunctional</span></h1></a>
+   <a href="index.php"> <h1>MRIs</h1></a>
 </div>
 
   <div id="aMRI-canvas">
