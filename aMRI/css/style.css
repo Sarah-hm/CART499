@@ -167,6 +167,17 @@ span {
   opacity: 0;
 }
 
+/* amris.php */
+
+.aMRI-displayed-prompt {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 500;
+  font-size: 1rem;
+  color: black;
+}
+
 /* Add animation */
 @keyframes ripple {
   from {

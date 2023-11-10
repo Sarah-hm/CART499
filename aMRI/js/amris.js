@@ -8,6 +8,13 @@ fetch("getData.php")
     let polyAlphas = [];
     let pathAlphas = [];
 
+    let polygons = document
+      .getElementById("svg-brain")
+      .getElementsByTagName("polygon");
+    let paths = document
+      .getElementById("svg-brain")
+      .getElementsByTagName("path");
+
     for (let i = 0; i < parsedJSON.length - 1; i++) {
       let currentEntry = i;
       prompt = parsedJSON[i].aMRIprompt;
@@ -31,16 +38,18 @@ fetch("getData.php")
       });
 
       pathAlphas.push({ currentEntry: pathTempAr });
+
+      displayAMRIprompt(
+        prompt,
+        parsedJSON,
+        polygons,
+        paths,
+        polyAlphas,
+        pathAlphas
+      );
     }
 
     // console.log(polyAlphas);
-
-    let polygons = document
-      .getElementById("svg-brain")
-      .getElementsByTagName("polygon");
-    let paths = document
-      .getElementById("svg-brain")
-      .getElementsByTagName("path");
 
     //foor all polygons, find its opacity (alpha) average given by all the dataset
     Object.keys(polygons).forEach((j) => {
@@ -71,7 +80,50 @@ fetch("getData.php")
       paths[j].style.opacity = averageAlpha;
     });
 
-    //For all parsed object, store the X poly Alpha in the X Alpha array,
-
-    //which you average out and give the opacity to
+    // Make the prompts appear at random
   });
+
+function displayAMRIprompt(
+  prompt,
+  data,
+  polygons,
+  paths,
+  polyAlphas,
+  pathAlphas
+) {
+  let pos = randomizePos();
+
+  this.div = document.createElement("div");
+  this.div.classList.add("aMRI-displayed-prompt");
+
+  document.body.appendChild(this.div);
+
+  this.div.style.left = `${pos.x}px`;
+  this.div.style.top = `${pos.y}px`;
+
+  this.p = document.createElement("p");
+  this.div.appendChild(this.p);
+  this.p.innerHTML = `${prompt}`;
+
+  this.div.addEventListener("mouseover", () => {
+    for (let i = 0; i < data.length - 1; i++) {
+      if (prompt === data[i].aMRIprompt) {
+        Object.keys(polygons).forEach((j) => {
+          //   console.log(polygons[j]);
+          //   console.log(polyAlphas[i].currentEntry[j].alpha);
+          let opacity = polyAlphas[i].currentEntry[j].alpha;
+          polygons[j].setAttribute("opacity", opacity);
+
+          console.log(opacity);
+          //   polygons[j].style.opacity = polyAlphas[j];
+        });
+      }
+    }
+  });
+}
+
+function randomizePos() {
+  let x = Math.floor(Math.random() * innerWidth);
+  let y = Math.floor(Math.random() * innerHeight);
+  return { x, y };
+}

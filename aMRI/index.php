@@ -36,7 +36,15 @@
 
 
   <div id="aMRI-canvas-prompt-container">
-    <div id="aMRI-canvas-prompt">Where do you feel it?</div>
+    <div id="aMRI-canvas-prompt">
+      <p>
+      Where do you feel it? <br>
+    
+      </p>
+      <p>Click and drag the mouse around to create a aMRI;   <br>
+      Go over multiple times to increase opacity</p>
+
+    </div>
   </div>
   <div id="aMRI-submit-container">
   <button id="aMRI-canvas-prompt-submit-button">Submit aMRI</button>
