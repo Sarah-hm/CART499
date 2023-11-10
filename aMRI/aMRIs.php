@@ -10,7 +10,10 @@
     <script src="js/amris.js"></script>
 </head>
 <body>
-
+<div id="aMRI-title-section">
+    <h1><span>afunctional</span></h1>
+    <h1>MRIs</h1>
+</div>
 
   <div id="aMRI-canvas">
       <div id="svg-brain-container">

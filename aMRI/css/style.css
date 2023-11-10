@@ -9,14 +9,20 @@
   z-index: 100;
   position: fixed;
   width: 80%;
-  height: 60vh;
+  height: 80vh;
   left: 10%;
-  top: 15%;
-  background: white;
+  top: 10%;
+  background: rgba(255, 255, 255, 0.5);
   padding: 2rem;
   text-wrap: balance;
   text-align: center;
   border: black solid 1px;
+}
+
+#aMRI-prompt-container h1 {
+}
+#aMRI-prompt-container h1 span {
+  font-style: italic;
 }
 
 #aMRI-prompt-form p {
@@ -27,6 +33,11 @@
   /* padding: 1%; */
   margin: 0.5rem;
   line-height: normal;
+}
+
+#aMRI-prompt-form p span {
+  background: black;
+  color: white;
 }
 
 #aMRI-prompt-form {
@@ -46,6 +57,10 @@
   border-bottom: 1px solid black;
   background: none;
   text-align: center;
+}
+
+#aMRI-prompt-form [type="text"] {
+  font-size: 1.5rem;
 }
 
 #aMRI-prompt-submit-button {
@@ -78,6 +93,10 @@
 }
 #aMRI-canvas-prompt-container > * {
   padding: 1%;
+}
+
+#aMRI-canvas-prompt h4 {
+  padding-bottom: 1rem;
 }
 
 #aMRI-canvas-prompt-container button,
@@ -151,23 +170,23 @@
 }
 /* ripple effect */
 
-span {
-  position: absolute;
-  border-radius: 50%;
-  /* To make it round */
-  background-color: rgba(0, 0, 0, 0.3);
-
-  width: 100px;
-  height: 100px;
-  margin-top: -50px;
-  /* for positioning */
-  margin-left: -50px;
-
-  animation: ripple 1s ease-out;
-  opacity: 0;
-}
-
 /* amris.php */
+
+#aMRI-title-section {
+  position: fixed;
+  text-align: left;
+  top: 0px;
+  left: 0px;
+  width: auto;
+  height: 10vh;
+  font-size: 1.5rem;
+  padding: 1rem;
+  z-index: 200;
+  /* font-style: italic; */
+}
+#aMRI-title-section span {
+  font-style: italic;
+}
 
 .aMRI-displayed-prompt {
   position: fixed;
