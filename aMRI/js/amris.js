@@ -51,37 +51,45 @@ fetch("getData.php")
 
     // console.log(polyAlphas);
 
-    //foor all polygons, find its opacity (alpha) average given by all the dataset
-    Object.keys(polygons).forEach((j) => {
-      let totalAlpha = 0;
-      let averageAlpha = 0;
-      //   let averAlpha;
-      for (let i = 0; i < parsedJSON.length - 1; i++) {
-        let currentAlpha = polyAlphas[i].currentEntry[j].alpha;
-        totalAlpha += currentAlpha;
-      }
-
-      averageAlpha = totalAlpha / parsedJSON.length;
-
-      polygons[j].style.opacity = averageAlpha;
-    });
-
-    Object.keys(paths).forEach((j) => {
-      let totalAlpha = 0;
-      let averageAlpha = 0;
-      //   let averAlpha;
-      for (let i = 0; i < parsedJSON.length - 1; i++) {
-        let currentAlpha = pathAlphas[i].currentEntry[j].alpha;
-        totalAlpha += currentAlpha;
-      }
-
-      averageAlpha = totalAlpha / parsedJSON.length;
-
-      paths[j].style.opacity = averageAlpha;
-    });
-
-    // Make the prompts appear at random
+    displayAverageAlphas(polygons, paths, polyAlphas, pathAlphas, parsedJSON);
   });
+
+function displayAverageAlphas(
+  polygons,
+  paths,
+  polyAlphas,
+  pathAlphas,
+  parsedJSON
+) {
+  //foor all polygons, find its opacity (alpha) average given by all the dataset
+  Object.keys(polygons).forEach((j) => {
+    let totalAlpha = 0;
+    let averageAlpha = 0;
+    //   let averAlpha;
+    for (let i = 0; i < parsedJSON.length - 1; i++) {
+      let currentAlpha = polyAlphas[i].currentEntry[j].alpha;
+      totalAlpha += currentAlpha;
+    }
+
+    averageAlpha = totalAlpha / parsedJSON.length;
+
+    polygons[j].style.opacity = averageAlpha;
+  });
+
+  Object.keys(paths).forEach((j) => {
+    let totalAlpha = 0;
+    let averageAlpha = 0;
+    //   let averAlpha;
+    for (let i = 0; i < parsedJSON.length - 1; i++) {
+      let currentAlpha = pathAlphas[i].currentEntry[j].alpha;
+      totalAlpha += currentAlpha;
+    }
+
+    averageAlpha = totalAlpha / parsedJSON.length;
+
+    paths[j].style.opacity = averageAlpha;
+  });
+}
 
 function displayAMRIprompt(
   prompt,
@@ -113,7 +121,7 @@ function displayAMRIprompt(
           //   console.log(polygons[j].setAttribute("style", `opacity:${};`));
           //   console.log(polyAlphas[j].currentEntry[j].alpha);
         }
-        console.log();
+
         Object.keys(polygons).forEach((j) => {
           let opacity = polyAlphas[i].currentEntry[j].alpha;
           polygons[j].removeAttribute("style");
@@ -126,6 +134,10 @@ function displayAMRIprompt(
         });
       }
     }
+  });
+
+  this.div.addEventListener("mouseleave", () => {
+    displayAverageAlphas(polygons, paths, polyAlphas, pathAlphas, data);
   });
 }
 
