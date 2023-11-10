@@ -12,7 +12,22 @@
 <body>
   <div id="aMRI-prompt-container">
       <div id="aMRI-prompt-form">
-        <label for="amri-prompt">How are you feeling today?</label>
+   
+        <p>
+        The functional MRI implies the existence of an afunctional MRI. <br>
+        </p>  
+        <p>
+        A functional Magnetic Resonance Imagery aims to understand what part of our brain, associated with specific functions, use the most energy given certain tasks. 
+        This is useful for physicians and other experts to analyze brain functions, advance science, and understand brain-related injuries and diseases better. 
+        </p>
+        <p>
+        Though it communicates information that are closest to us, an fMRI remains innaccessible information for most. Its functions are for experts to understand.
+        </p>
+
+        <p>Another function of this kind of imagery could be to communicate information to ourselves in a more humanist and personal way. Simplifying convoluted data by removing layers of scientific accuracy would be naive, but it may make information more reachable, thus more meaningful.</p>
+        <p>There is no pain nerve endings in the brain, so imaging brain functions help us gain awareness of those functions better, and our own situatedness within them. Although we cannot actually feel them, seeing them may emulate a similar sensation.</p>
+        <p>The aMRI makes you reflect on a general idea, and asks you where in your brain you think this may come from. Is it a random choice, or do you know the brain enough to guess with precision? Which functions do you think visualizing those data may have? In the most non-scientific way possible, why is it important to reflect where in your brain things come from?</p>
+        <label for="amri-prompt"> How are you feeling today?</label>
         <input type="text" id="amri-prompt" name="amri-prompt" />
         <button id="aMRI-prompt-submit-button">Submit</button>
       </div>

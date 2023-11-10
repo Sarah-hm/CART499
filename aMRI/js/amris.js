@@ -10,6 +10,8 @@ fetch("getData.php")
 
     for (let i = 0; i < parsedJSON.length - 1; i++) {
       prompt = parsedJSON[i].aMRIprompt;
+      //   polyAlphas.push(parsedJSON[i].polygonsAlphas.split(","));
+      //   pathAlphas.push(parsedJSON[i].pathsAlphas.split(","));
       polyAlphas = parsedJSON[i].polygonsAlphas.split(",");
       pathAlphas = parsedJSON[i].pathsAlphas.split(",");
     }
@@ -24,40 +26,34 @@ fetch("getData.php")
     //foor all polygons, find its opacity (alpha) average given by all the dataset
     Object.keys(polygons).forEach((j) => {
       let totalAlpha = 0;
-      let averAlpha;
+      let averageAlpha = 0;
+      //   let averAlpha;
       for (let i = 0; i < parsedJSON.length; i++) {
+        console.log(polyAlphas[j]);
         let currentAlpha = parseFloat(polyAlphas[j]);
-        totalAlpha += currentAlpha;
+        totalAlpha = totalAlpha + currentAlpha;
         console.log(totalAlpha);
       }
-      //   console.log(totalAlpha);
-      //   let sum = 0;
-      //   totalAlpha.forEach((num) => {
-      //     sum += num;
-      //   });
-      //   console.log(sum);
 
-      //   let averageAlpha = sum / parsedJSON.length;
-      let averageAlpha = totalAlpha / parsedJSON.length;
+      averageAlpha = totalAlpha / parsedJSON.length;
+      console.log(averageAlpha);
 
       polygons[j].style.opacity = averageAlpha;
     });
 
     Object.keys(paths).forEach((j) => {
       let totalAlpha = 0;
-      let averAlpha;
+      let averageAlpha = 0;
+      //   let averAlpha;
       for (let i = 0; i < parsedJSON.length; i++) {
+        //   console.log(polyAlphas[j]);
         let currentAlpha = parseFloat(pathAlphas[j]);
-        totalAlpha += currentAlpha;
+        totalAlpha = totalAlpha + currentAlpha;
+        console.log(totalAlpha);
       }
-      //   console.log(totalAlpha);
-      //   let sum = 0;
-      //   totalAlpha.forEach((num) => {
-      //     sum += num;
-      //   });
-      //   console.log(sum);
 
-      let averageAlpha = totalAlpha / parsedJSON.length;
+      averageAlpha = totalAlpha / parsedJSON.length;
+      console.log(averageAlpha);
 
       paths[j].style.opacity = averageAlpha;
     });

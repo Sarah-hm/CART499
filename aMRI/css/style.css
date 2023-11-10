@@ -8,15 +8,25 @@
 #aMRI-prompt-container {
   z-index: 100;
   position: fixed;
-  width: 30%;
-  height: 30vh;
-  left: 35%;
-  top: 35%;
+  width: 80%;
+  height: 60vh;
+  left: 10%;
+  top: 15%;
   background: white;
   padding: 2rem;
-  text-wrap: nowrap;
+  text-wrap: balance;
   text-align: center;
   border: black solid 1px;
+}
+
+#aMRI-prompt-form p {
+  width: 100%;
+  /* font-size: 0.75rem; */
+  text-align: center;
+  text-wrap: balance;
+  /* padding: 1%; */
+  margin: 0.5rem;
+  line-height: normal;
 }
 
 #aMRI-prompt-form {
@@ -45,6 +55,9 @@
   cursor: pointer;
   background: none;
   transition: all 0.2s;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 #aMRI-prompt-submit-button:hover {
@@ -78,6 +91,9 @@
   cursor: pointer;
   background: none;
   transition: all 0.2s;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
 }
 #aMRI-canvas-prompt-submit-button:hover,
 #aMRI-submit-container button:hover {
