@@ -1,5 +1,5 @@
 // POST DATA
-async function postData(aMRIprompt) {
+async function postData(aMRIprompt, polygonsAlphas, pathsAlphas) {
   const response = await fetch(`postData.php`, {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
     mode: "cors", // no-cors, *cors, same-origin
@@ -11,27 +11,23 @@ async function postData(aMRIprompt) {
     //},
     redirect: "follow", // manual, *follow, error
     referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    body: new URLSearchParams({ aMRIprompt: aMRIprompt }), // body data type must match "Content-Type" header
+    body: new URLSearchParams({
+      aMRIprompt: aMRIprompt,
+      polygonsAlphas: polygonsAlphas,
+      pathsAlphas: pathsAlphas,
+    }), // body data type must match "Content-Type" header
   });
   let resp = await response.text();
   console.log(resp);
 }
 
 window.onload = (event) => {
-  document
-    .getElementById("aMRI-prompt-submit-button")
-    .addEventListener("click", () => {
-      let promptValue = document.getElementById("amri-prompt").value;
-      postData(promptValue);
-      document.getElementById("aMRI-prompt-container").remove();
-    });
-
   const aMRIcanvas = document.getElementById("aMRI-canvas");
   const paths = document.getElementsByTagName("path");
   const polygons = document.getElementsByTagName("polygon");
 
+  let promptValue;
   let mouseDown = false;
-  //   document.getElementsByTagNameNS
 
   aMRIcanvas.addEventListener("click", (e) => {
     console.log(e.clientX, e.clientY);
@@ -59,11 +55,6 @@ window.onload = (event) => {
     setTimeout(() => {
       ripple.remove();
     }, 300);
-  });
-
-  document.addEventListener("keydown", () => {
-    let dump = document.getElementById("amri-prompt").value;
-    console.log(JSON.stringify(dump));
   });
 
   function handleBrainSvgsEvents(e) {
@@ -112,4 +103,36 @@ window.onload = (event) => {
       }
     });
   });
+
+  // Submitting the aMRI prompt removes the window, and displays the canvas prompt
+  document
+    .getElementById("aMRI-prompt-submit-button")
+    .addEventListener("click", () => {
+      promptValue = document.getElementById("amri-prompt").value;
+      document.getElementById("aMRI-prompt-container").remove();
+      document.getElementById("aMRI-canvas-prompt-container").style.display =
+        "block";
+      document.getElementById("aMRI-submit-container").style.display = "block";
+    });
+
+  // submit the full aMRI will post the prompt and the opacity level of all paths to the dataset
+  document
+    .getElementById("aMRI-canvas-prompt-submit-button")
+    .addEventListener("click", () => {
+      console.log("clicked");
+      let polygonsAlphas = [];
+      let pathsAlphas = [];
+
+      Object.keys(polygons).forEach((i) => {
+        let currentAlpha = parseFloat(polygons[i].getAttribute("opacity"));
+        polygonsAlphas.push(currentAlpha);
+      });
+
+      Object.keys(paths).forEach((i) => {
+        let currentAlpha = parseFloat(paths[i].getAttribute("opacity"));
+        pathsAlphas.push(currentAlpha);
+      });
+
+      postData(promptValue, polygonsAlphas, pathsAlphas);
+    });
 };

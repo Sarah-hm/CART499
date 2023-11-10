@@ -16,12 +16,21 @@
         <input type="text" id="amri-prompt" name="amri-prompt" />
         <button id="aMRI-prompt-submit-button">Submit</button>
       </div>
-</div>
-    <!-- <div id="aMRI-canvas-prompt-container"></div> -->
+  </div>
 
-    <div id="aMRI-canvas">
+
+
+  <div id="aMRI-canvas-prompt-container">
+    <div id="aMRI-canvas-prompt">Where do you feel it?</div>
+  </div>
+  <div id="aMRI-submit-container">
+  <button id="aMRI-canvas-prompt-submit-button">Submit aMRI</button>
+  </div>
+
+
+  <div id="aMRI-canvas">
       <div id="svg-brain-container">
-      <svg id="Layer_7" data-name="Layer 7" id ="svg-brain" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1893.07 1504.49" height="100%" width ="100%" >
+      <svg data-name="Layer 7" id ="svg-brain" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1893.07 1504.49" height="100%" width ="100%" >
 
       <g>
     <polygon class="cls-1" points="877.99 232.21 877.99 271.86 843.65 291.69 809.31 271.86 809.31 253.25 877.54 231.94 877.99 232.21"/>

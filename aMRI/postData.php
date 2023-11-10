@@ -4,12 +4,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 // echo($_POST['aMRI-prompt']);
 // need to process
  $aMRIprompt = $_POST['aMRIprompt'];
+ $polygonsAlphas = $_POST['polygonsAlphas'];
+ $pathsAlphas = $_POST['pathsAlphas'];
  //run if there is a files array
 
    //package the data and echo back
     /* make  a new php object*/
     $myPackagedData=new stdClass();
     $myPackagedData->aMRIprompt = $aMRIprompt ;
+    $myPackagedData->polygonsAlphas = $polygonsAlphas ;
+    $myPackagedData->pathsAlphas = $pathsAlphas ;
 
      /* Now we want to JSON encode these values as a JSON string ..
      to send them to $.ajax success  call back function... */
