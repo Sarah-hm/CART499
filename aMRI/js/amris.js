@@ -9,12 +9,31 @@ fetch("getData.php")
     let pathAlphas = [];
 
     for (let i = 0; i < parsedJSON.length - 1; i++) {
+      let currentEntry = i;
       prompt = parsedJSON[i].aMRIprompt;
-      //   polyAlphas.push(parsedJSON[i].polygonsAlphas.split(","));
-      //   pathAlphas.push(parsedJSON[i].pathsAlphas.split(","));
-      polyAlphas = parsedJSON[i].polygonsAlphas.split(",");
-      pathAlphas = parsedJSON[i].pathsAlphas.split(",");
+
+      let polySplitStringAr = parsedJSON[i].polygonsAlphas.split(",");
+      let pathSplitStringAr = parsedJSON[i].polygonsAlphas.split(",");
+
+      //Put all alpha level (of all polygons) in an array, per dataset item (one aMRI)
+      let polyTempAr = [];
+      polySplitStringAr.forEach((e) => {
+        polyTempAr.push({ alpha: parseFloat(e) });
+      });
+
+      polyAlphas.push({ currentEntry: polyTempAr });
+
+      //   console.log(polyAlphas);
+
+      let pathTempAr = [];
+      pathSplitStringAr.forEach((e) => {
+        pathTempAr.push({ alpha: parseFloat(e) });
+      });
+
+      pathAlphas.push({ currentEntry: pathTempAr });
     }
+
+    // console.log(polyAlphas);
 
     let polygons = document
       .getElementById("svg-brain")
@@ -28,15 +47,12 @@ fetch("getData.php")
       let totalAlpha = 0;
       let averageAlpha = 0;
       //   let averAlpha;
-      for (let i = 0; i < parsedJSON.length; i++) {
-        console.log(polyAlphas[j]);
-        let currentAlpha = parseFloat(polyAlphas[j]);
-        totalAlpha = totalAlpha + currentAlpha;
-        console.log(totalAlpha);
+      for (let i = 0; i < parsedJSON.length - 1; i++) {
+        let currentAlpha = polyAlphas[i].currentEntry[j].alpha;
+        totalAlpha += currentAlpha;
       }
 
       averageAlpha = totalAlpha / parsedJSON.length;
-      console.log(averageAlpha);
 
       polygons[j].style.opacity = averageAlpha;
     });
@@ -45,15 +61,12 @@ fetch("getData.php")
       let totalAlpha = 0;
       let averageAlpha = 0;
       //   let averAlpha;
-      for (let i = 0; i < parsedJSON.length; i++) {
-        //   console.log(polyAlphas[j]);
-        let currentAlpha = parseFloat(pathAlphas[j]);
-        totalAlpha = totalAlpha + currentAlpha;
-        console.log(totalAlpha);
+      for (let i = 0; i < parsedJSON.length - 1; i++) {
+        let currentAlpha = pathAlphas[i].currentEntry[j].alpha;
+        totalAlpha += currentAlpha;
       }
 
       averageAlpha = totalAlpha / parsedJSON.length;
-      console.log(averageAlpha);
 
       paths[j].style.opacity = averageAlpha;
     });
