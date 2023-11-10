@@ -105,17 +105,24 @@ function displayAMRIprompt(
   this.div.appendChild(this.p);
   this.p.innerHTML = `${prompt}`;
 
+  // If you hover over a prompt, the brain turns into its specific aMRI (according to alpha data)
   this.div.addEventListener("mouseover", () => {
     for (let i = 0; i < data.length - 1; i++) {
       if (prompt === data[i].aMRIprompt) {
+        for (let j = 0; j < polygons.length; j++) {
+          //   console.log(polygons[j].setAttribute("style", `opacity:${};`));
+          //   console.log(polyAlphas[j].currentEntry[j].alpha);
+        }
+        console.log();
         Object.keys(polygons).forEach((j) => {
-          //   console.log(polygons[j]);
-          //   console.log(polyAlphas[i].currentEntry[j].alpha);
           let opacity = polyAlphas[i].currentEntry[j].alpha;
+          polygons[j].removeAttribute("style");
           polygons[j].setAttribute("opacity", opacity);
-
-          console.log(opacity);
-          //   polygons[j].style.opacity = polyAlphas[j];
+        });
+        Object.keys(paths).forEach((j) => {
+          let opacity = pathAlphas[i].currentEntry[j].alpha;
+          paths[j].removeAttribute("style");
+          paths[j].setAttribute("opacity", opacity);
         });
       }
     }
