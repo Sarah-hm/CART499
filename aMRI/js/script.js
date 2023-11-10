@@ -134,5 +134,6 @@ window.onload = (event) => {
       });
 
       postData(promptValue, polygonsAlphas, pathsAlphas);
+      window.location.replace("aMRIs.php");
     });
 };
