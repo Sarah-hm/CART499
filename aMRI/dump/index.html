@@ -9,7 +9,13 @@
   </head>
   <body>
     <div id="aMRI-prompt-container">
-      <!-- <form action="/action_page.php" method="get" id="aMRI-prompt-form">
+      <!-- <form action="/postData.php" method="get" id="aMRI-prompt-form"> -->
+      <div id="aMRI-prompt-form">
+        <label for="amri-prompt">How are you feeling today?</label>
+        <input type="text" id="amri-prompt" name="amri-prompt" />
+        <button id="aMRI-prompt-submit-button">Submit</button>
+      </div>
+      <!-- <form method="get" id="aMRI-prompt-form">
         <label for="amri-prompt">How are you feeling today?</label>
         <input type="text" id="amri-prompt" name="amri-prompt" />
         <input type="submit" value="Submit" />

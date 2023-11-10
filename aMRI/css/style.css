@@ -34,9 +34,10 @@
   outline: none;
   border-bottom: 1px solid black;
   background: none;
+  text-align: center;
 }
 
-#aMRI-prompt-form [type="submit"] {
+#aMRI-prompt-submit-button {
   border: none;
   outline: none;
   border: 1px solid black;
@@ -45,63 +46,42 @@
   transition: all 0.2s;
 }
 
-#aMRI-prompt-form [type="submit"]:hover {
+#aMRI-prompt-submit-button:hover {
   color: white;
   background: black;
 }
 
 #aMRI-canvas {
-  width: 100%;
-  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  cursor: pointer;
 }
 
 /* svg brain */
 
 #svg-brain-container {
-  width: 100vw;
-  height: 100vh;
-  background-color: cyan;
+  background-color: white;
 }
 
 #svg-brain {
-  width: 100%;
+  transform: scale(0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: pink;
-  padding: 2rem;
-  padding-left: 5rem;
-  padding-right: 5rem;
+  /* padding: 2rem; */
+  /* padding-left: 5rem;
+  padding-right: 5rem; */
 }
 
 /* brain svgs */
-.cls-1,
-.cls-2 {
-  fill: grey;
-  stroke: grey;
-}
 
-path {
-  cursor: pointer;
-}
-
-.cls-1,
-.cls-2,
-.cls-3 {
+.cls-1 {
+  fill: salmon;
+  /* fill-opacity: 0.1; */
+  /* opacity: 0.1; */
   stroke-width: 0px;
+  /* filter: drop-shadow(100px 5px 2px rgb(0 0 0 / 0.4)); */
 }
-
-.cls-3 {
-  fill: darkgrey;
-  stroke: darkgrey;
-  transition: all 0.2s;
-}
-
-.cls-3:hover {
-  fill: black;
-  /* transform: scale(2); */
-}
-
 /* ripple effect */
 
 span {
