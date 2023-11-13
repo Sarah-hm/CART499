@@ -5,18 +5,25 @@
   font-family: sans-serif;
 }
 
+/* body {
+  min-width: 1000px;
+} */
+
 #aMRI-prompt-container {
   z-index: 100;
   position: fixed;
-  width: 80%;
-  height: 80vh;
-  left: 10%;
-  top: 10%;
+  /* width: 80%;
+  height: 80vh; */
+  /* left: 10%;
+  top: 10%; */
   background: rgba(255, 255, 255, 0.5);
   padding: 2rem;
   text-wrap: balance;
   text-align: center;
   border: black solid 1px;
+  min-width: 700px;
+  min-height: 500px;
+  margin: 5rem 10rem;
 }
 
 #aMRI-prompt-container h1 {
@@ -31,24 +38,43 @@
   text-align: center;
   text-wrap: balance;
   /* padding: 1%; */
-  margin: 0.5rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
   line-height: normal;
 }
 
-#aMRI-prompt-form p span {
+#aMRI-prompt-form p span,
+#aMRI-canvas-prompt p span {
   background: black;
   color: white;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  margin-right: 0.2rem;
+  margin-left: 0.2rem;
 }
 
 #aMRI-prompt-form {
   display: flex;
   flex-direction: column;
   height: 100%;
-  justify-content: space-between;
+  justify-content: center;
 }
 
-#aMRI-prompt-form > * {
-  margin: 1%;
+#aMRI-prompt-form-input-container {
+  width: 70%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 2rem auto;
+}
+
+#aMRI-prompt-form h4 {
+  font-size: 1.5rem;
+  background: black;
+  color: white;
+  padding: 0.25rem;
+  margin: 0.5rem 0;
 }
 
 #aMRI-prompt-form [type="text"] {
@@ -57,11 +83,27 @@
   border-bottom: 1px solid black;
   background: none;
   text-align: center;
+  font-size: 1.25rem;
+  margin: 1rem 0;
 }
 
-#aMRI-prompt-form [type="text"] {
-  font-size: 1.5rem;
+#aMRI-prompt-form [type="text"]::placeholder {
+  color: lightgrey;
+  transition: color 300ms;
 }
+#aMRI-prompt-form [type="text"]::-ms-input-placeholder {
+  /* Edge 12 -18 */
+  color: lightgrey;
+  transition: color 300ms;
+}
+
+#aMRI-prompt-form [type="text"]:hover::placeholder {
+  color: grey;
+}
+/* 
+#aMRI-prompt-form [type="text"]::placeholder {
+  color: grey;
+} */
 
 #aMRI-prompt-submit-button {
   border: none;
@@ -73,6 +115,7 @@
   padding: 1rem;
   font-size: 1rem;
   font-weight: bold;
+  margin-top: 1rem;
 }
 
 #aMRI-prompt-submit-button:hover {
@@ -91,12 +134,21 @@
   text-align: center;
   display: none;
 }
-#aMRI-canvas-prompt-container > * {
+/* #aMRI-canvas-prompt-container > * {
   padding: 1%;
-}
+} */
 
 #aMRI-canvas-prompt h4 {
-  padding-bottom: 1rem;
+  font-size: 1.5rem;
+  /* background: black;
+  color: white; */
+  padding: 0.2rem;
+  width: 50%;
+  margin: 0 auto 1rem;
+}
+
+#aMRI-canvas-prompt p {
+  margin: 0.5rem 0;
 }
 
 #aMRI-canvas-prompt-container button,
@@ -132,6 +184,36 @@
   display: none;
 }
 
+#aMRI-visualization-description-container {
+  position: fixed;
+  margin: auto 0;
+  width: 100%;
+  text-align: center;
+  z-index: 500;
+  /* bottom: 0; */
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  min-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#aMRI-visualization-description-inner-container {
+  border: 1px solid black;
+  width: 30%;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  text-wrap: balance;
+}
+
+#aMRI-visualization-description-inner-container h4 {
+  font-size: 1.25rem;
+  padding: 0.2rem;
+  text-wrap: balance;
+  margin: 0 auto 1rem;
+}
+
 /* svg brain */
 
 #aMRI-canvas {
@@ -162,7 +244,7 @@
   align-items: center;
 }
 
-/* brain svgs */
+/* hexagones svgs */
 
 .cls-1 {
   fill: salmon;

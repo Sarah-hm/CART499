@@ -12,7 +12,18 @@
 <body>
 <div id="aMRI-title-section">
     <a href="index.php"><h1><span>afunctional</span></h1></a>
-   <a href="index.php"> <h1>MRIs</h1></a>
+   <a href="index.php"> <h1>MRI</h1></a>
+</div>
+
+<div id="aMRI-visualization-description-container">
+  <div id="aMRI-visualization-description-inner-container">
+  <h4>
+    This is an average of every participants' aMRI data.
+  </h4>
+  <p>
+    Hover over the prompts too explore their specific aMRI.
+  </p>
+  </div>
 </div>
 
   <div id="aMRI-canvas">

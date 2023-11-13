@@ -10,9 +10,13 @@
     <script src="js/script.js"></script>
 </head>
 <body>
+<div id="aMRI-title-section">
+    <a href="index.php"><h1><span>afunctional</span></h1></a>
+   <a href="index.php"> <h1>MRI</h1></a>
+</div>
 
   <div id="aMRI-prompt-container">
-    <h1><span>afunctional</span> MRI</h1>
+
       <div id="aMRI-prompt-form">
    
         <p>
@@ -23,16 +27,21 @@
         This is useful for physicians and other experts to analyze brain functions, advance science, and understand brain-related injuries and diseases better. 
         </p>
         <p>
-        Though it communicates information that are closest to us, an <span> fMRI remains innaccessible information for most </span>. Its functions are for experts to understand.
+        Though it communicates information that are closest to us, <span> fMRI results remain complex and innaccessible information for most </span>. Its affordances are for experts to understand.
         </p>
 
         <p>Another function of this kind of imagery could be to <span> communicate information to ourselves </span> in a more humanist and personal way. Simplifying convoluted data by removing layers of scientific accuracy would be <span>  naive </span>, but it may make information more <span> reachable </span>, thus more <span> meaningful </span>.</p>
         <p>There is no pain nerve endings in the brain, so imaging brain functions help us gain awareness of those functions better, and our own situatedness within them. Although we cannot actually feel them, seeing them may emulate a similar sensation.</p>
+       
         <p>The <span> afuntional MRI makes you reflect </span> on a general idea, and <span> asks where in your brain </span> you think this may come from. Is it a random choice, or do you know the brain enough to guess with precision? Which functions do you think visualizing those data may have? In the most non-scientific way possible, why is it important to reflect where in your brain things come from?</p>
+        
+        <div id="aMRI-prompt-form-input-container">
         <h4>How are you feeling today?</h4>
         <!-- <label for="amri-prompt"> </label> -->
-        <input type="text" id="amri-prompt" name="amri-prompt" />
+        <input type="text" id="amri-prompt" name="amri-prompt" placeholder="Answer here"/>
         <button id="aMRI-prompt-submit-button">Submit</button>
+        </div>
+
       </div>
   </div>
 
@@ -42,9 +51,12 @@
     <div id="aMRI-canvas-prompt">
       <h4>Where do you feel it?</h4>
 
-      <p>Click and drag the mouse around to create an aMRI;<br>
-      Go over multiple times to increase opacity</p>
+      <p><span>Click and drag</span>the mouse around to create an aMRI;
 
+     </p>
+      <p>
+      <span>Go over an area multiple times to increase</span> its intensity.
+      </p>
     </div>
   </div>
   <div id="aMRI-submit-container">
