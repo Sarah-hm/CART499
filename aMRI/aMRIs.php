@@ -21,7 +21,7 @@
     This is an average of every participants' aMRI data.
   </h4>
   <p>
-    Hover over the prompts too explore their specific aMRI.
+    Hover over the prompts to explore their specific aMRI.
   </p>
   </div>
 </div>

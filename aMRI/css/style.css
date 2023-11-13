@@ -189,10 +189,10 @@
   margin: auto 0;
   width: 100%;
   text-align: center;
-  z-index: 500;
+  z-index: 1000;
   /* bottom: 0; */
   padding-top: 1rem;
-  padding-bottom: 1rem;
+
   min-width: 500px;
   display: flex;
   justify-content: center;

@@ -142,7 +142,13 @@ function displayAMRIprompt(
 }
 
 function randomizePos() {
-  let x = Math.floor(Math.random() * innerWidth);
-  let y = Math.floor(Math.random() * innerHeight);
+  const minWidth = innerWidth / 20;
+  const maxWidth = (innerWidth / 10) * 9;
+
+  let x = Math.floor(Math.random() * (maxWidth - minWidth) + minWidth);
+
+  let y = Math.floor(
+    Math.random() * (innerHeight - innerHeight / 4) + innerHeight / 4
+  );
   return { x, y };
 }
