@@ -23,6 +23,7 @@ window.onload = () => {
       pistons.push(currentPiston);
     }
   }
+
   // run through every frame, regardless of mouse movement
   //(so durcheinander can decrease even on contemplation)
 
@@ -45,45 +46,101 @@ window.onload = () => {
         piston.element.classList.remove("pressed");
       }
     }
-    // for (let piston of pistons) {
-    //   //   console.log(piston);
-    //   let pistonRect = piston.gridItem.getBoundingClientRect();
-    //   const hovering = isHovering(user.rect, pistonRect);
-
-    //   if (hovering) {
-    //     piston.hovering = true;
-    //     piston.gridItem.classList.add("pressed");
-
-    //     let rgbValues = toRGBObject(piston.gridItem.style.backgroundColor);
-    //     // console.log(rgbValues.red);
-
-    //     const colorDelta = 5;
-
-    //     let min = rgbValues.red - colorDelta;
-    //     let max = rgbValues.red + colorDelta;
-    //     let red = piston.getRandomInteger(min, max);
-
-    //     min = rgbValues.green - colorDelta;
-    //     max = rgbValues.green + colorDelta;
-    //     let green = piston.getRandomInteger(min, max);
-
-    //     min = rgbValues.blue - colorDelta;
-    //     max = rgbValues.blue + colorDelta;
-    //     let blue = piston.getRandomInteger(min, max);
-
-    //     piston.setColor(red, green, blue);
-    //     // console.log(red);
-    //   } else {
-    //     piston.gridItem.classList.remove("pressed");
-    //     piston.hovering = false;
-    //     // piston.setColor(
-    //     //   piston.getRandomInteger(this.minHue, this.maxHue),
-    //     //   piston.getRandomInteger(this.minHue, this.maxHue),
-    //     //   piston.getRandomInteger(this.minHue, this.maxHue)
-    //     // );
-    //   }
-    // }
   });
+
+  // Every second, take a screenshot of the pistons that are pressed and take their RGB values and average them together, eg: red is predominant, add 5 to all R values, decrease all GB by 5
+  setInterval(() => {
+    let pressedReds = [];
+    let pressedGreens = [];
+    let pressedBlues = [];
+
+    for (let piston of pistons) {
+      if (piston.element.classList.contains("pressed")) {
+        let color = toRGBObject(piston.element.style.backgroundColor);
+
+        pressedReds.push(color.red);
+        pressedGreens.push(color.green);
+        pressedBlues.push(color.blue);
+      }
+    }
+
+    // calculate sum of all individual three values
+    let sumRed = 0;
+    for (let i = 0; i < pressedReds.length; i++) {
+      sumRed += pressedReds[i];
+    }
+    let sumGreen = 0;
+    for (let i = 0; i < pressedReds.length; i++) {
+      sumGreen += pressedGreens[i];
+    }
+    let sumBlue = 0;
+    for (let i = 0; i < pressedReds.length; i++) {
+      sumBlue += pressedBlues[i];
+    }
+
+    // Switch between which RGB value has global highest average
+    let highestHue = Math.max(sumRed, sumGreen, sumBlue);
+
+    // Get the piston objects that are pressed only
+    for (let piston of pistons) {
+      if (piston.element.classList.contains("pressed")) {
+        // reinforce the highest hue for every piston's color
+        switch (highestHue) {
+          case sumRed:
+            piston.r += 5;
+            piston.g -= 5;
+            piston.b -= 5;
+            break;
+          case sumGreen:
+            piston.g += 5;
+            piston.r -= 5;
+            piston.b -= 5;
+            break;
+          case sumBlue:
+            piston.b += 5;
+            piston.r -= 5;
+            piston.g -= 5;
+            break;
+          default:
+            console.log("error with highest hue switch");
+        }
+      } else {
+        // if not pressed, make the rgb values < and > 200 slowly oscillate around 200
+        if (piston.r >= 200) {
+          piston.r -= 2;
+        } else if (piston.r < 200) {
+          piston.r += 2;
+        }
+        if (piston.g >= 200) {
+          piston.g -= 2;
+        } else if (piston.g < 200) {
+          piston.g += 2;
+        }
+        if (piston.b >= 200) {
+          piston.b -= 2;
+        } else if (piston.b < 200) {
+          piston.b += 2;
+        }
+      }
+    }
+  }, 1000);
+
+  // function reinfornceHue(hue) {
+  //   for (let piston of pistons) {
+  //     if (piston.element.classList.contains("pressed")) {
+  //       switch(hue){
+  //         case "red":
+  //         break;
+  //         case "green":
+  //         break;
+  //         case "blue":
+  //         break;
+  //         default:
+  //         console.log("error with the highest hue reinforcement")
+  //       }
+  //     }
+  //   }
+  // }
 
   function isHovering(user, pistonRect) {
     // console.log(userRects);

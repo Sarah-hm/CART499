@@ -28,14 +28,17 @@ class Piston {
     // Append the grid item to the container
     this.container.appendChild(this.element);
 
-    this.r = 125;
-    this.g = 125;
-    this.b = 125;
+    // Start from plain light gray
+    this.r = 200;
+    this.g = 200;
+    this.b = 200;
 
+    // set the min and max for each rgb values
     this.rHues = this.hues(this.r);
     this.gHues = this.hues(this.g);
     this.bHues = this.hues(this.b);
 
+    // set piston color with random RGB between current value +/- durcheinander rate
     this.setColor(
       this.getRandomInteger(this.rHues.min, this.rHues.max),
       this.getRandomInteger(this.gHues.min, this.gHues.max),
@@ -44,21 +47,25 @@ class Piston {
   }
 
   setColor(r, g, b) {
-    console.log(r, g, b);
+    // set piston color to rgb value
     this.element.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 
+    // Update durcheinander rate
+    if (this.hovering) {
+      this.decreaseDurcheinander();
+    } else {
+      this.increaseDurcheinander();
+    }
+    // reset the min and max for each rgb values
+    this.rHues = this.hues(this.r);
+    this.gHues = this.hues(this.g);
+    this.bHues = this.hues(this.b);
+
+    // reset a new timeout to recolor
     this.timeout = this.getRandomInteger(500, 1000);
 
+    // update durcheinrecolor piston after timeout
     setTimeout(() => {
-      if (this.hovering) {
-        this.decreaseDurcheinander();
-      } else {
-        this.increaseDurcheinander();
-      }
-      this.rHues = this.hues(this.r);
-      this.gHues = this.hues(this.g);
-      this.bHues = this.hues(this.b);
-
       this.setColor(
         this.getRandomInteger(this.rHues.min, this.rHues.max),
         this.getRandomInteger(this.gHues.min, this.gHues.max),
@@ -68,7 +75,6 @@ class Piston {
   }
 
   increaseDurcheinander() {
-    // console.log("increasing durcheinander");
     if (this.durcheinanderRate <= 75) {
       this.durcheinanderRate += this.durcheinanderDelta;
     }
@@ -79,27 +85,22 @@ class Piston {
     if (this.durcheinanderRate <= 0) {
       this.durcheinanderRate -= this.durcheinanderDelta;
     }
-    // this.recalculateColorAvg("decrease");
   }
 
-  // Possible hues to a specific piston's durcheinander rate
+  // calculates the minimum and maximum hue for a specific RGB value (-/+ Durcheinander rate)
   hues(hue) {
-    // console.log(hue);
-    // reduce minimum
-    if (hue > 0) {
-      // console.log("hello");
+    // calculate minimum from current hue + durch rate
+    if (hue - this.durcheinanderRate > 0) {
       this.min = hue - this.durcheinanderRate;
-      // console.log(hue - this.durcheinanderRate);
     } else {
       this.min = 0;
     }
-    if (hue < 255) {
+    // calculate maximum from current hue + durch rate
+    if (hue + this.durcheinanderRate < 255) {
       this.max = hue + this.durcheinanderRate;
     } else {
       this.max = 255;
     }
-    // console.log(this.min);
-
     return { min: this.min, max: this.max };
   }
 
