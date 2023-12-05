@@ -23,6 +23,8 @@ window.onload = () => {
       pistons.push(currentPiston);
     }
   }
+  // run through every frame, regardless of mouse movement
+  //(so durcheinander can decrease even on contemplation)
 
   document.addEventListener("mousemove", (e) => {
     user.mouseMove(e.clientX, e.clientY);
@@ -35,11 +37,9 @@ window.onload = () => {
       if (hovering) {
         piston.hovering = true;
         piston.element.classList.add("pressed");
-        piston.increaseDurcheinander();
       } else {
         piston.hovering = false;
         piston.element.classList.remove("pressed");
-        piston.decreaseDurcheinander();
       }
     }
     // for (let piston of pistons) {

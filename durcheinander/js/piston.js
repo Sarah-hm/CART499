@@ -6,7 +6,7 @@ class Piston {
     this.durcheinanderRate = 25;
 
     // rate at which durcheinander changes every time to color gets randomized
-    this.durcheinanderDelta = 5;
+    this.durcheinanderDelta = 25;
 
     this.hovering = false;
 
@@ -45,6 +45,12 @@ class Piston {
     this.timeout = this.getRandomInteger(500, 1000);
 
     setTimeout(() => {
+      console.log(this.durcheinanderRate);
+      if (this.hovering) {
+        this.decreaseDurcheinander();
+      } else {
+        this.increaseDurcheinander();
+      }
       this.setColor(
         this.getRandomInteger(this.hues().min, this.hues().max),
         this.getRandomInteger(this.hues().min, this.hues().max),
@@ -55,7 +61,7 @@ class Piston {
 
   increaseDurcheinander() {
     // console.log("increasing durcheinander");
-    if (this.durcheinanderRate <= 255) {
+    if (this.durcheinanderRate <= 125) {
       this.durcheinanderRate += this.durcheinanderDelta;
     }
   }

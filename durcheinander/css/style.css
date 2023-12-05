@@ -1,6 +1,6 @@
 :root {
-  --col-num: 15;
-  --row-num: 15;
+  --col-num: 50;
+  --row-num: 50;
 
   --user-width: 300px;
   --user-height: 500px;
@@ -20,7 +20,7 @@ body {
   display: grid;
   grid-template-columns: repeat(var(--col-num), 1fr);
   grid-template-rows: repeat(var(--row-num), 1fr);
-  gap: 3px;
+  gap: 1px;
   margin: 0;
   padding: 0;
   border: 1px solid black;
@@ -57,7 +57,7 @@ body {
 
 .cls-1 {
   /* cursor: none; */
-  fill: rgba(0, 0, 0, 0.1);
+  fill: transparent;
   stroke-width: 1px;
 }
 
