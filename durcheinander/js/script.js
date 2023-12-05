@@ -34,11 +34,11 @@ window.onload = () => {
 
       if (hovering) {
         piston.hovering = true;
-        // piston.element.classList.add("pressed");
+        piston.element.classList.add("pressed");
         piston.increaseDurcheinander();
       } else {
         piston.hovering = false;
-        // piston.element.classList.remove("pressed");
+        piston.element.classList.remove("pressed");
         piston.decreaseDurcheinander();
       }
     }

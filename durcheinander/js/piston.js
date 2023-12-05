@@ -5,6 +5,9 @@ class Piston {
     // original delta rate with which to randomize color (with starting color average)
     this.durcheinanderRate = 25;
 
+    // rate at which durcheinander changes every time to color gets randomized
+    this.durcheinanderDelta = 5;
+
     this.hovering = false;
 
     this.container = gridContainer;
@@ -51,11 +54,17 @@ class Piston {
   }
 
   increaseDurcheinander() {
-    console.log("increasing durcheinander");
+    // console.log("increasing durcheinander");
+    if (this.durcheinanderRate <= 255) {
+      this.durcheinanderRate += this.durcheinanderDelta;
+    }
   }
 
   decreaseDurcheinander() {
-    console.log("decreasing durcheinander");
+    // console.log("decreasing durcheinander");
+    if (this.durcheinanderRate <= 0) {
+      this.durcheinanderRate -= this.durcheinanderDelta;
+    }
   }
 
   getRandomInteger(min, max) {
