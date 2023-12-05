@@ -37,6 +37,9 @@ window.onload = () => {
       if (hovering) {
         piston.hovering = true;
         piston.element.classList.add("pressed");
+        // average out the color of all hovered pistons
+        //by taking RGB values, reducing the 2 smaller and increasing the higher
+        // console.log(piston.colorAvg);
       } else {
         piston.hovering = false;
         piston.element.classList.remove("pressed");
