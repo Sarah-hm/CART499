@@ -55,6 +55,10 @@ class Piston {
       } else {
         this.increaseDurcheinander();
       }
+      this.rHues = this.hues(this.r);
+      this.gHues = this.hues(this.g);
+      this.bHues = this.hues(this.b);
+
       this.setColor(
         this.getRandomInteger(this.rHues.min, this.rHues.max),
         this.getRandomInteger(this.gHues.min, this.gHues.max),
@@ -68,32 +72,14 @@ class Piston {
     if (this.durcheinanderRate <= 75) {
       this.durcheinanderRate += this.durcheinanderDelta;
     }
-    // this.recalculateColorAvg("increase");
   }
 
   decreaseDurcheinander() {
-    // console.log("decreasing durcheinander");
+    console.log("decreasing durcheinander");
     if (this.durcheinanderRate <= 0) {
       this.durcheinanderRate -= this.durcheinanderDelta;
     }
     // this.recalculateColorAvg("decrease");
-  }
-
-  // recalculateColorAvg(delta) {
-  //   switch (delta) {
-  //     case "increase":
-  //       this.colorAvg += this.durcheinanderRate;
-  //       break;
-  //     case "decrease":
-  //       this.colorAvg -= this.durcheinanderRate;
-  //       break;
-  //     default:
-  //       console.log("something gone wrong recalculating color avgs");
-  //   }
-  // }
-
-  getRandomInteger(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   // Possible hues to a specific piston's durcheinander rate
@@ -107,14 +93,18 @@ class Piston {
     } else {
       this.min = 0;
     }
-    if (hue < 225) {
+    if (hue < 255) {
       this.max = hue + this.durcheinanderRate;
     } else {
-      this.max = 200;
+      this.max = 255;
     }
     // console.log(this.min);
 
     return { min: this.min, max: this.max };
+  }
+
+  getRandomInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   toRGBObject(rgbString) {
