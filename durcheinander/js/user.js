@@ -1,6 +1,6 @@
 class User {
   constructor() {
-    this.user = document.getElementById("user");
+    this.element = document.getElementById("user");
 
     this.rect = document.getElementById("user").getElementsByTagName("rect")[0];
 
@@ -12,7 +12,7 @@ class User {
     this.x = x - this.deltaX;
     this.y = y - this.deltaY;
 
-    this.user.style.left = `${this.x} `;
-    this.user.style.top = `${this.y}`;
+    this.element.style.left = `${this.x} `;
+    this.element.style.top = `${this.y}`;
   }
 }

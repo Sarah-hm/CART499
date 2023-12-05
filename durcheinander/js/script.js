@@ -27,61 +27,69 @@ window.onload = () => {
   document.addEventListener("mousemove", (e) => {
     user.mouseMove(e.clientX, e.clientY);
 
-    // let userElsRects = [];
-    // for (let element of user.elements) {
-    //   let currentRect = element.getBoundingClientRect();
-    //   userElsRects.push(currentRect);
-    // }
-
+    let userRect = user.element.getBoundingClientRect();
     for (let piston of pistons) {
-      //   console.log(piston);
-      let pistonRect = piston.gridItem.getBoundingClientRect();
-      const hovering = isHovering(user.rect, pistonRect);
+      let pistonRect = piston.element.getBoundingClientRect();
+      const hovering = isHovering(userRect, pistonRect);
 
       if (hovering) {
         piston.hovering = true;
-        piston.gridItem.classList.add("pressed");
-
-        let rgbValues = toRGBObject(piston.gridItem.style.backgroundColor);
-        // console.log(rgbValues.red);
-
-        const colorDelta = 5;
-
-        let min = rgbValues.red - colorDelta;
-        let max = rgbValues.red + colorDelta;
-        let red = piston.getRandomInteger(min, max);
-
-        min = rgbValues.green - colorDelta;
-        max = rgbValues.green + colorDelta;
-        let green = piston.getRandomInteger(min, max);
-
-        min = rgbValues.blue - colorDelta;
-        max = rgbValues.blue + colorDelta;
-        let blue = piston.getRandomInteger(min, max);
-
-        piston.setColor(red, green, blue);
-        // console.log(red);
+        // piston.element.classList.add("pressed");
+        piston.increaseDurcheinander();
       } else {
-        piston.gridItem.classList.remove("pressed");
         piston.hovering = false;
-        // piston.setColor(
-        //   piston.getRandomInteger(this.minHue, this.maxHue),
-        //   piston.getRandomInteger(this.minHue, this.maxHue),
-        //   piston.getRandomInteger(this.minHue, this.maxHue)
-        // );
+        // piston.element.classList.remove("pressed");
+        piston.decreaseDurcheinander();
       }
     }
+    // for (let piston of pistons) {
+    //   //   console.log(piston);
+    //   let pistonRect = piston.gridItem.getBoundingClientRect();
+    //   const hovering = isHovering(user.rect, pistonRect);
+
+    //   if (hovering) {
+    //     piston.hovering = true;
+    //     piston.gridItem.classList.add("pressed");
+
+    //     let rgbValues = toRGBObject(piston.gridItem.style.backgroundColor);
+    //     // console.log(rgbValues.red);
+
+    //     const colorDelta = 5;
+
+    //     let min = rgbValues.red - colorDelta;
+    //     let max = rgbValues.red + colorDelta;
+    //     let red = piston.getRandomInteger(min, max);
+
+    //     min = rgbValues.green - colorDelta;
+    //     max = rgbValues.green + colorDelta;
+    //     let green = piston.getRandomInteger(min, max);
+
+    //     min = rgbValues.blue - colorDelta;
+    //     max = rgbValues.blue + colorDelta;
+    //     let blue = piston.getRandomInteger(min, max);
+
+    //     piston.setColor(red, green, blue);
+    //     // console.log(red);
+    //   } else {
+    //     piston.gridItem.classList.remove("pressed");
+    //     piston.hovering = false;
+    //     // piston.setColor(
+    //     //   piston.getRandomInteger(this.minHue, this.maxHue),
+    //     //   piston.getRandomInteger(this.minHue, this.maxHue),
+    //     //   piston.getRandomInteger(this.minHue, this.maxHue)
+    //     // );
+    //   }
+    // }
   });
 
-  function isHovering(userRects, pistonRect) {
+  function isHovering(user, pistonRect) {
     // console.log(userRects);
-    console.log(userRects[0]);
     // Check for overlap
     const overlap = !(
-      userRects[0].right < pistonRect.left ||
-      userRects[0].left > pistonRect.right ||
-      userRects[0].bottom < pistonRect.top ||
-      userRects[0].top > pistonRect.bottom
+      user.right < pistonRect.left ||
+      user.left > pistonRect.right ||
+      user.bottom < pistonRect.top ||
+      user.top > pistonRect.bottom
     );
     return overlap;
   }

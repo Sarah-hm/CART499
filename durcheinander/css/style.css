@@ -20,7 +20,7 @@ body {
   display: grid;
   grid-template-columns: repeat(var(--col-num), 1fr);
   grid-template-rows: repeat(var(--row-num), 1fr);
-  gap: 1px;
+  gap: 2px;
   margin: 0;
   padding: 0;
   border: 1px solid black;
@@ -38,9 +38,9 @@ body {
 }
 
 .pressed {
-  /* -webkit-box-shadow: inset 1px 1px 10px #333;
+  -webkit-box-shadow: inset 1px 1px 10px #333;
   -moz-box-shadow: inset 1px 1px 10px #333;
-  box-shadow: inset 1px 1px 10px #333; */
+  box-shadow: inset 1px 1px 10px #333;
 }
 
 #user {
