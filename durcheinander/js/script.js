@@ -28,9 +28,11 @@ window.onload = () => {
   //(so durcheinander can decrease even on contemplation)
 
   document.addEventListener("mousemove", (e) => {
+    console.log(e.clientX);
     user.mouseMove(e.clientX, e.clientY);
 
     let userRect = user.element.getBoundingClientRect();
+    console.log(userRect);
     for (let piston of pistons) {
       let pistonRect = piston.element.getBoundingClientRect();
       const hovering = isHovering(userRect, pistonRect);
@@ -124,23 +126,6 @@ window.onload = () => {
       }
     }
   }, 1000);
-
-  // function reinfornceHue(hue) {
-  //   for (let piston of pistons) {
-  //     if (piston.element.classList.contains("pressed")) {
-  //       switch(hue){
-  //         case "red":
-  //         break;
-  //         case "green":
-  //         break;
-  //         case "blue":
-  //         break;
-  //         default:
-  //         console.log("error with the highest hue reinforcement")
-  //       }
-  //     }
-  //   }
-  // }
 
   function isHovering(user, pistonRect) {
     // console.log(userRects);

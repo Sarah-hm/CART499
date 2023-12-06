@@ -81,8 +81,8 @@ class Piston {
   }
 
   decreaseDurcheinander() {
-    console.log("decreasing durcheinander");
-    if (this.durcheinanderRate <= 0) {
+    // console.log("decreasing durcheinander");
+    if (this.durcheinanderRate <= 10) {
       this.durcheinanderRate -= this.durcheinanderDelta;
     }
   }
