@@ -1,0 +1,39 @@
+:root {
+  --col-num: 52;
+  --row-num: 40;
+}
+
+#grid-container {
+  width: 1000px;
+  height: 600px;
+  display: grid;
+  grid-template-columns: repeat(var(--col-num), 1fr);
+  grid-template-rows: repeat(var(--row-num), 1fr);
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid black;
+}
+
+.grid-item {
+  width: 99%;
+  height: 99%;
+  border: rgba(0, 0, 0, 0.1) 0.5px solid;
+  display: inline;
+}
+
+#user {
+  width: 350px;
+  height: 600px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid black;
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#form {
+  z-index: 3;
+}

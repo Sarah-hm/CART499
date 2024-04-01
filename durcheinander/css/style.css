@@ -4,6 +4,10 @@
 
   --user-width: 150px;
   --user-height: 300px;
+
+  --h-value: 0;
+  --s-value: 50;
+  --l-value: 50;
 }
 body {
   display: flex;
@@ -34,7 +38,7 @@ body {
   /* width: 100%;
   height: 100%; */
   outline: black 0.5px;
-  background-color: rgb(150, 150, 150);
+  /* background-color: rgb(150, 150, 150); */
   /* padding: 10px; */
   border: 1px solid #fff;
   -webkit-box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.75);
