@@ -20,16 +20,30 @@ window.onload = () => {
   for (let row = 0; row < row_num; row++) {
     // for each columns
     for (let col = 0; col < col_num; col++) {
-      let pixel = new Pixel(gridContainer, row, col);
+      let pixel = new Pixel(row, col);
       pixels.push(pixel);
+    }
+  }
+
+  for (let row = 0; row < row_num; row++) {
+    // for each columns
+    for (let col = 0; col < col_num; col++) {
+      // get all 4 nearest h values
+      for (let pixel in pixels) {
+      }
     }
   }
 
   document.addEventListener("mousemove", (e) => {
     mouseMove(e.clientX, e.clientY);
 
-    let userRect = user.getBoundingClientRect();
+    // for (let pixel of pixels) {
+    // }
+  });
 
+  // Every second, take a screenshot of the pistons that are pressed and take their RGB values and average them together, eg: red is predominant, add 5 to all R values, decrease all GB by 5
+  setInterval(() => {
+    let userRect = user.getBoundingClientRect();
     for (let pixel of pixels) {
       let pixelRect = pixel.element.getBoundingClientRect();
       const hovering = isHovering(userRect, pixelRect);
@@ -40,9 +54,7 @@ window.onload = () => {
         pixel.increaseDurch();
       }
     }
-
-    console.log(pixels[0].h);
-  });
+  }, 1000);
 
   function mouseMove(x, y) {
     x = x - deltaX;

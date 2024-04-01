@@ -2,13 +2,13 @@ class Pixel {
   constructor(col, row) {
     this.col = col;
     this.row = row;
-    this.dur = 120;
+    this.dur = 50;
     this.h = Math.floor(Math.random() * (360 + 1));
     this.s = 60;
     this.l = 60;
 
     this.mindurch = 10;
-    this.maxdurch = 200;
+    this.maxdurch = 120;
     this.durDelta = 1;
 
     // create pixel element and append it to grid container
@@ -47,24 +47,26 @@ class Pixel {
     this.timeout = this.getRandomInteger(500, 1000);
 
     // update durcheinrecolor piston after timeout
-    setTimeout(() => {
-      this.setColor(this.getRandomInteger(this.range.min, this.range.max));
-    }, this.timeout);
+    // setTimeout(() => {
+    //   this.setColor(this.getRandomInteger(this.range.min, this.range.max));
+    // }, this.timeout);
   }
+
+  averageColor() {}
 
   hues(hue) {
     // calculate minimum from current hue + durch rate
     if (hue - this.dur > this.mindurch) {
-      this.min = hue + this.dur;
+      this.min = hue - this.dur;
     } else {
-      this.min = this.maxdurch;
+      this.min = hue;
     }
 
     // calculate maximum from current hue + durch rate
     if (hue + this.dur < this.maxdurch) {
       this.max = hue + this.dur;
     } else {
-      this.max = this.maxdurch;
+      this.max = hue;
     }
     return { min: this.min, max: this.max };
   }
